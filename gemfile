@@ -1,0 +1,16 @@
+source :rubygems
+source :rubyforge
+
+gem 'maventhought.testing'
+gem 'maventhought.commons'
+
+group :build do
+	gem 'albacore'
+	gem 'git'
+end
+
+group :tools do
+#  gem 'stylecop'
+#  gem 'gallio'
+end
+
