@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{522EE1CA-4EE4-4DC8-9789-6DCBC39F8F88}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MavenThought.Units.Tests</RootNamespace>
+    <AssemblyName>MavenThought.Units.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Gallio, Version=3.2.0.0, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\Gallio.dll</HintPath>
+    </Reference>
+    <Reference Include="MavenThought.Commons, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\maventhought.commons-0.2.0.0\MavenThought.Commons.dll</HintPath>
+    </Reference>
+    <Reference Include="MavenThought.Commons.Testing, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\MavenThought.Commons.Testing.dll</HintPath>
+    </Reference>
+    <Reference Include="MbUnit, Version=3.2.0.0, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\MbUnit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Mocks, Version=3.6.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\Rhino.Mocks.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpTestsEx, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8c60d8070630b1c1, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\sharptestsex-1.0.0.0.20100911\sharptestsex\SharpTestsEx.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap, Version=2.6.1.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap.AutoMocking, Version=2.6.1.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\StructureMap.AutoMocking.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AreaConversionSpecification.cs" />
+    <Compile Include="DimensionConversionSpecification.cs" />
+    <Compile Include="DistanceSpecification.cs" />
+    <Compile Include="ImperialConversionFromFeetSpecification.cs" />
+    <Compile Include="ImperialConversionToFeetSpecification.cs" />
+    <Compile Include="MetricConversionFromSpecification.cs" />
+    <Compile Include="MetricConversionToMetersSpecification.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitExtensionsSpecification.cs" />
+    <Compile Include="UnitSpecification.cs" />
+    <Compile Include="When_area_converts.cs" />
+    <Compile Include="When_comparing_distances.cs">
+      <DependentUpon>UnitExtensionsSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_comparing_two_area_units.cs">
+      <DependentUpon>UnitSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_comparing_two_distance_units.cs">
+      <DependentUpon>UnitSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_converts_cms_from_meters.cs">
+      <DependentUpon>MetricConversionFromSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_converts_cms_to_meters.cs">
+      <DependentUpon>MetricConversionToMetersSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_converts_feet_to_feet.cs">
+      <DependentUpon>ImperialConversionToFeetSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_converts_inches_to_feet.cs">
+      <DependentUpon>ImperialConversionToFeetSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_converts_kms_from_meters.cs">
+      <DependentUpon>MetricConversionFromSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_converts_kms_to_meters.cs">
+      <DependentUpon>MetricConversionToMetersSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_converts_meters_from_meters.cs">
+      <DependentUpon>MetricConversionFromSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_converts_meters_to_meters.cs">
+      <DependentUpon>MetricConversionToMetersSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_converts_miles_to_feet.cs">
+      <DependentUpon>ImperialConversionToFeetSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_converts_yards_to_feet.cs">
+      <DependentUpon>ImperialConversionToFeetSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_convert_dimension_is_called_from_imperial_to_metric.cs">
+      <DependentUpon>UnitExtensionsSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_convert_dimension_is_called_from_metric_to_imperial.cs">
+      <DependentUpon>UnitExtensionsSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_convert_dimension_is_called_from_metric_to_metric.cs">
+      <DependentUpon>UnitExtensionsSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_distance_conversion_from_base_value_is_called.cs">
+      <DependentUpon>DistanceSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_distance_conversion_to_base_value_is_called.cs">
+      <DependentUpon>DistanceSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_double_in_dimension_extension_method_is_called.cs">
+      <DependentUpon>UnitExtensionsSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_imperial_distance_from_feet_is_called.cs">
+      <DependentUpon>When_distance_conversion_from_base_value_is_called.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_imperial_distance_to_feet_is_called.cs">
+      <DependentUpon>When_distance_conversion_to_base_value_is_called.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_integer_in_dimension_extension_method_is_called.cs">
+      <DependentUpon>UnitExtensionsSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_metric_distance_from_meters_is_called.cs">
+      <DependentUpon>When_distance_conversion_from_base_value_is_called.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_metric_distance_to_meters_is_called.cs">
+      <DependentUpon>When_distance_conversion_to_base_value_is_called.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\main\MavenThought.Units\MavenThought.Units.csproj">
+      <Project>{2F9B0C26-02E9-46CD-8DC3-E30949A17F3F}</Project>
+      <Name>MavenThought.Units</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
