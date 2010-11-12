@@ -1,12 +1,13 @@
 source :rubygems
 source :rubyforge
 
-gem 'maventhought.testing'
-gem 'maventhought.commons'
+gem 'albacore'
+gem 'git'
 
-group :build do
-	gem 'albacore'
-	gem 'git'
+group :dev do
+	gem 'maventhought.testing'
+	gem 'maventhought.commons'
+	gem 'sharptestsex'
 end
 
 group :tools do
