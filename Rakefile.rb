@@ -2,10 +2,7 @@ require 'rubygems'
 
 require 'albacore'
 require 'rake/clean'
-require 'zip/zip'
-require 'zip/zipfilesystem'
 require 'git'
-require 'rake/gempackagetask'
 require 'noodle'
 require 'set'
 
@@ -14,7 +11,7 @@ include FileUtils
 solution_file = FileList["*.sln"].first
 build_file = FileList["*.msbuild"].first
 project_name = "MavenThought.Units"
-commit = Git.open(".").log.first.sha[0..10]
+commit = Git.open(".").log.first.sha[0..10] rescue 'na'
 version = "0.2.0.0"
 deploy_folder = "c:/temp/build/#{project_name}.#{version}_#{commit}"
 merged_folder = "#{deploy_folder}/merged"
@@ -44,7 +41,7 @@ namespace :setup do
 			system "bundle install --system"
 		end	
 		Noodle::Rake::NoodleTask.new :local do |n|
-			n.groups << :dev
+			n.groups << :runtime
 			n.groups << :testing
 		end
 	end
@@ -54,7 +51,6 @@ namespace :build do
 
 	desc "Build the project"
 	msbuild :all, :config do |msb, args|
-		msb.path_to_command =  msbuild_path
 		msb.properties :configuration => args[:config] || :Debug
 		msb.targets :Build
 		msb.solution = solution_file
@@ -80,15 +76,16 @@ namespace :deploy do
 		rm_rf(deploy_folder)
 		Dir.mkdir(deploy_folder) unless File.directory? deploy_folder
 		Rake::Task["build:all"].invoke(:Release)
-		
-		["test:all", "deploy:package", "deploy:merge", "deploy:gem"].each do |taskName|
-			Rake::Task[taskName].invoke
-		end
+		Rake::Task["test:all"].invoke
+		Rake::Task["deploy:package"].invoke
 	end 
 	
 	task :update_version do 
 		files = FileList["main/**/Properties/AssemblyInfo.cs"]
-		files.each { |file| Rake::Task["deploy:assemblyinfo"].invoke(file) }
+		files.each do |file| 
+			Rake::Task["deploy:assemblyinfo"].invoke(file) 
+			Rake::Task["deploy:assemblyinfo"].reenable 
+		end
 	end
 	
 	assemblyinfo :assemblyinfo, :file do |asm, args|
@@ -100,24 +97,19 @@ namespace :deploy do
 		asm.copyright = "MavenThought Inc. 2010"
 		asm.output_file = args[:file]
 	end	
-		
+
 	task :package do
-		Dir.mkdir(deploy_folder) unless File.directory? deploy_folder
-		curdir = Dir.pwd
-		Dir.chdir("main/#{project_name}/bin/release")
-		files = FileList["*.dll"]
-		puts "Sorry can't find any files in #{Dir.pwd} to add to the zip" unless !files.empty?
-		puts "Creating zip file #{zip_file}" unless !files.empty?
-		Zip::ZipOutputStream.open(zip_file) do |zos|
-			files.each do |file|
-				# Create a new entry with some arbitrary name
-				zos.put_next_entry(file)
-				# Add the contents of the file, don't read the stuff linewise if its binary, instead use direct IO
-				content = IO.read(file)
-				zos.write(content)
-			end
+		[project_name].each do | proj |
+			puts "Zip contents for #{proj}"
+			Rake::Task["deploy:zip"].invoke(proj)
+			Rake::Task["deploy:zip"].reenable
 		end
-		Dir.chdir(curdir)
+	end
+	
+	zip :zip, :zip_project do |zip, args|
+		zip.directories_to_zip "main/#{args[:zip_project]}/bin/release"
+		zip.output_file =  "#{args[:zip_project]}.#{version}_#{commit}.zip"
+		zip.output_path = deploy_folder
 	end
 	
 	task :merge do
@@ -136,16 +128,28 @@ namespace :deploy do
 		rm("#{project_name}.pdb")
 	end
 
-	task :gem do
-		rm_rf('gem/lib') if File.directory?('gem/lib')
-		mkdir('gem/lib')
-		FileList["#{merged_folder}/*.dll"].each { |f| cp(f, "gem/lib") }
-		chdir('gem')
-		spec = eval(IO.read("#{project_name}.gemspec"))
-		spec.version = version
-		Gem::Builder.new(spec).build
-		chdir('..')
-		FileList["gem/#{project_name}-*.gem"].each { |f| mv(f, deploy_folder) }
+end
+
+namespace :jeweler do
+	require 'jeweler'
+
+	desc 'Build the release and then the gem'
+	task :buildit do
+		Rake::Task["build:all"].invoke(:Release)
+		files = Dir.glob("main/MavenThought.Units/bin/release/Maven*.dll")
+		copy files, "lib"
+		Rake::Task["jeweler:build"].invoke
 	end
-  
+  	
+	Jeweler::Tasks.new do |gs|
+		gs.name = "maventhought.units"
+		gs.summary = "Unit Classes to describe distance, weight, etc"
+		gs.description = "The Unit library provides classes to be able to express and use units in a fluid easy way"
+		gs.email = "amir@barylko.com"
+		gs.homepage = "https://github.com/amirci/mt_units"
+		gs.authors = ["Amir Barylko"]
+		gs.has_rdoc = false 
+		gs.rubyforge_project = 'maventhought.units'  
+		gs.files = Dir.glob("main/MavenThought.Units/bin/release/Maven*.dll")
+	end
 end
