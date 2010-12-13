@@ -12,7 +12,7 @@ solution_file = FileList["*.sln"].first
 build_file = FileList["*.msbuild"].first
 project_name = "MavenThought.Units"
 commit = Git.open(".").log.first.sha[0..10] rescue 'na'
-version = "0.2.0.0"
+version = IO.readlines('VERSION')[0] rescue "0.0.0.0"
 deploy_folder = "c:/temp/build/#{project_name}.#{version}_#{commit}"
 merged_folder = "#{deploy_folder}/merged"
 zip_file = "#{deploy_folder}/#{project_name}.#{version}_#{commit}.zip"
@@ -150,6 +150,6 @@ namespace :jeweler do
 		gs.authors = ["Amir Barylko"]
 		gs.has_rdoc = false 
 		gs.rubyforge_project = 'maventhought.units'  
-		gs.files = Dir.glob("main/MavenThought.Units/bin/release/Maven*.dll")
+		gs.files = "lib/MavenThought.Units.dll"
 	end
 end

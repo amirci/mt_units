@@ -46,9 +46,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MavenThought.Commons, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\maventhought.commons-0.2.0.0\MavenThought.Commons.dll</HintPath>
+    <Reference Include="MavenThought.Commons">
+      <HintPath>..\..\lib\maventhought.commons-0.3.0\lib\MavenThought.Commons.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

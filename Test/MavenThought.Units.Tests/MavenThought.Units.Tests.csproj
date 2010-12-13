@@ -48,34 +48,28 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Gallio, Version=3.2.0.0, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL">
-      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\Gallio.dll</HintPath>
+      <HintPath>..\..\lib\gallio-3.2.601\Gallio.dll</HintPath>
     </Reference>
-    <Reference Include="MavenThought.Commons, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\maventhought.commons-0.2.0.0\MavenThought.Commons.dll</HintPath>
+    <Reference Include="MavenThought.Commons">
+      <HintPath>..\..\lib\maventhought.commons-0.3.0\lib\MavenThought.Commons.dll</HintPath>
     </Reference>
     <Reference Include="MavenThought.Commons.Testing, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\lib\maventhought.testing-0.2.0.0\MavenThought.Commons.Testing.dll</HintPath>
     </Reference>
     <Reference Include="MbUnit, Version=3.2.0.0, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL">
-      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\MbUnit.dll</HintPath>
+      <HintPath>..\..\lib\gallio-3.2.601\MbUnit.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\Microsoft.Practices.ServiceLocation.dll</HintPath>
-    </Reference>
-    <Reference Include="Rhino.Mocks, Version=3.6.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
-      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\Rhino.Mocks.dll</HintPath>
+    <Reference Include="Rhino.Mocks">
+      <HintPath>..\..\lib\rhino.mocks-3.6.0.0\Rhino.Mocks.dll</HintPath>
     </Reference>
     <Reference Include="SharpTestsEx, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8c60d8070630b1c1, processorArchitecture=MSIL">
       <HintPath>..\..\lib\sharptestsex-1.0.0.0.20100911\sharptestsex\SharpTestsEx.dll</HintPath>
     </Reference>
-    <Reference Include="StructureMap, Version=2.6.1.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\StructureMap.dll</HintPath>
+    <Reference Include="StructureMap">
+      <HintPath>..\..\lib\structuremap.automocking-2.6.1.1\StructureMap.dll</HintPath>
     </Reference>
-    <Reference Include="StructureMap.AutoMocking, Version=2.6.1.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\StructureMap.AutoMocking.dll</HintPath>
+    <Reference Include="StructureMap.AutoMocking">
+      <HintPath>..\..\lib\structuremap.automocking-2.6.1.1\StructureMap.AutoMocking.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
