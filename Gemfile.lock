@@ -18,16 +18,16 @@ GEM
       git (>= 1.2.5)
       rake
     log4net (1.2.10.0)
-    maventhought.commons (0.3.0)
+    maventhought.commons (0.3.1)
       castle.windsor (~> 2.5.1)
       commonservicelocator
+      maventhought.testing
       microsoft.composite
-    maventhought.testing (0.3.0)
+    maventhought.testing (0.3.1)
       commonservicelocator
       gallio (~> 3.2)
       nunit
       rhino.mocks (~> 3.6)
-      sharptestsex
       structuremap.automocking (~> 2.6.1.1)
     microsoft.composite (2.0.0)
     nlog (1.0.0.505.20100822)

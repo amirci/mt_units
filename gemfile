@@ -2,8 +2,11 @@ source :rubygems
 source :rubyforge
 
 group :runtime do
-	gem 'maventhought.testing'
 	gem 'maventhought.commons'
+end
+
+group :dev do
+	gem 'maventhought.testing'
 	gem 'sharptestsex'
 end
 

@@ -42,7 +42,7 @@ namespace :setup do
 		end	
 		Noodle::Rake::NoodleTask.new :local do |n|
 			n.groups << :runtime
-			n.groups << :testing
+			n.groups << :dev
 		end
 	end
 end
