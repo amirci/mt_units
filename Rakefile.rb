@@ -103,6 +103,44 @@ namespace :deploy do
 
 end
 
+namespace :publish do
+	
+	desc "Publish nuget package"
+	task :nuget  => ["util:build_release"] do
+		nuget_lib = "nuget/lib"
+		Rake::Task["util:clean_folder"].invoke("nuget")
+		mkdir nuget_lib
+		FileList["main/**/bin/release/MavenT*Units.dll"].each { |f| cp f, nuget_lib }
+		nuget_package = project_name
+		Rake::Task["publish:package"].invoke(nuget_package)
+		sh "nuget push nuget/#{nuget_package}.#{version}.nupkg" 
+	end 
+
+	nuspec :spec, :package_id  do |nuspec, args|
+	   nuspec.id = args.package_id
+	   nuspec.version = version
+	   nuspec.authors = "Amir Barylko"
+	   nuspec.owners = "Amir Barylko"
+	   nuspec.description = "Unit library to facilitate the modeling and manipulation of distances, areas, etc"
+	   nuspec.summary = "Unit library to facilitate the modeling and manipulation of distances, areas, etc"
+	   nuspec.language = "en-US"
+	   nuspec.licenseUrl = "https://github.com/amirci/mt_units/LICENSE"
+	   nuspec.projectUrl = "https://github.com/amirci/mt_units"
+	   nuspec.working_directory = "nuget"
+	   nuspec.output_file = "#{args.package_id}.#{version}.nuspec"
+	   nuspec.tags = "units fluid"
+	   nuspec.dependency "maventhought.commons", "0.9.2"
+	end
+	
+	nugetpack :package, :package_id do |p, args|
+		spec = Rake::Task["publish:spec"]
+		spec.invoke(args.package_id)
+		spec.reenable
+		p.nuspec = "nuget/#{args.package_id}.#{version}.nuspec"
+		p.output = "nuget"
+	end
+end
+
 namespace :util do
 	task :clean_folder, :folder do |t, args|
 		rm_rf(args.folder)
@@ -113,8 +151,6 @@ namespace :util do
 		asm.version = version
 		asm.company_name = "MavenThought Inc."
 		asm.product_name = "#{project_name}"
-		asm.title = "#{project_name} (sha #{commit})"
-		asm.description = "Library that facilitates the modeling of units of distance, area, etc"
 		asm.copyright = "MavenThought Inc. 2010 - #{DateTime.now.year}"
 		asm.output_file = "main/GlobalAssemblyInfo.cs"
 	end	
