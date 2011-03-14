@@ -1,6 +1,9 @@
 *.suo
 *.user
 *.cache
+Packages
+packages
+nuget
 Reports
 TestResult.xml
 _*
