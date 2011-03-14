@@ -2,22 +2,16 @@ source :rubygems
 source :rubyforge
 
 group :runtime do
-	gem 'maventhought.commons'
 end
 
 group :dev do
-	gem 'maventhought.testing'
-	gem 'sharptestsex'
 end
 
 group :setup do
 	gem 'albacore'
 	gem 'git'
-	gem 'jeweler'
 end
 
 group :tools do
-#  gem 'stylecop'
-#  gem 'gallio'
 end
 

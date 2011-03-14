@@ -5,38 +5,9 @@ GEM
     albacore (0.2.2)
       rake (>= 0.8.7)
       rubyzip (>= 0.9.4)
-    castle.core (2.5.1.0.20100926)
-      log4net (= 1.2.10.0)
-      nlog (= 1.0.0.505.20100822)
-    castle.windsor (2.5.1.0)
-      castle.core (= 2.5.1.0.20100926)
-    commonservicelocator (1.0.0.0)
-    gallio (3.2.601)
     git (1.2.5)
-    jeweler (1.5.1)
-      bundler (~> 1.0.0)
-      git (>= 1.2.5)
-      rake
-    log4net (1.2.10.0)
-    maventhought.commons (0.3.1)
-      castle.windsor (~> 2.5.1)
-      commonservicelocator
-      maventhought.testing
-      microsoft.composite
-    maventhought.testing (0.3.1)
-      commonservicelocator
-      gallio (~> 3.2)
-      nunit
-      rhino.mocks (~> 3.6)
-      structuremap.automocking (~> 2.6.1.1)
-    microsoft.composite (2.0.0)
-    nlog (1.0.0.505.20100822)
-    nunit (2.5.7.10213.20100801)
     rake (0.8.7)
-    rhino.mocks (3.6.0.0)
     rubyzip (0.9.4)
-    sharptestsex (1.0.0.0.20100911)
-    structuremap.automocking (2.6.1.1)
 
 PLATFORMS
   x86-mingw32
@@ -44,7 +15,3 @@ PLATFORMS
 DEPENDENCIES
   albacore
   git
-  jeweler
-  maventhought.commons
-  maventhought.testing
-  sharptestsex

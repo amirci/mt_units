@@ -1,5 +1,8 @@
 require 'rubygems'    
 
+sh "bundle install --system"
+Gem.clear_paths
+
 require 'albacore'
 require 'rake/clean'
 require 'git'
@@ -24,7 +27,7 @@ desc 'Default build'
 task :default => ["build:all"]
 
 desc 'Setup requirements to build and deploy'
-task :setup => ["setup:dep:download", "setup:dep:local"]
+task :setup => ["setup:dep"]
 
 desc "Updates build version, generate zip, merged version and the gem in #{deploy_folder}"
 task :deploy => ["deploy:all"]
@@ -47,7 +50,7 @@ end
 namespace :build do
 
 	desc "Build the project"
-	msbuild :all, :config do |msb, args|
+	msbuild :all, [:config] => [:setup] do |msb, args|
 		msb.properties :configuration => args[:config] || :Debug
 		msb.targets :Build
 		msb.solution = solution_file
